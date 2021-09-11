@@ -1,0 +1,31 @@
+$ docker run -d -it ubuntu sh -c 'echo "Input website:"; read website; echo "Searching.."; sleep 1; curl http://$website;'
+eec2c71d96555d82a457066aa065528901259a3d820b5b0801bc1868a0a5bbd6
+$ docker ps
+CONTAINER ID   IMAGE     COMMAND                   CREATED          STATUS          PORTS     NAMES
+eec2c71d9655   ubuntu    "sh -c 'echo \"Input …"   11 seconds ago   Up 10 seconds             interesting_brahmagupta
+$ docker exec -it eec bash
+root@eec2c71d9655:/# apt-get update; apt-get install curl
+Get:1 http://archive.ubuntu.com/ubuntu focal InRelease [265 kB]
+Get:2 http://security.ubuntu.com/ubuntu focal-security InRelease [114 kB]
+Get:3 http://archive.ubuntu.com/ubuntu focal-updates InRelease [114 kB]
+Get:4 http://archive.ubuntu.com/ubuntu focal-backports InRelease [101 kB]             
+Get:5 http://archive.ubuntu.com/ubuntu focal/restricted amd64 Packages [33.4 kB]
+Get:6 http://security.ubuntu.com/ubuntu focal-security/restricted amd64 Packages [528 kB]          
+Get:7 http://archive.ubuntu.com/ubuntu focal/main amd64 Packages [1275 kB]  
+Get:8 http://archive.ubuntu.com/ubuntu focal/multiverse amd64 Packages [177 kB]                             
+Get:9 http://security.ubuntu.com/ubuntu focal-security/universe amd64 Packages [791 kB]  
+...
+done.
+root@eec2c71d9655:/# exit
+exit
+$ docker attach eec
+helsinki.fi
+Searching..
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>301 Moved Permanently</title>
+</head><body>
+<h1>Moved Permanently</h1>
+<p>The document has moved <a href="https://www.helsinki.fi/">here</a>.</p>
+</body></html>
+
