@@ -1,0 +1,36 @@
+$ docker pull devopsdockeruh/simple-web-service:alpine
+alpine: Pulling from devopsdockeruh/simple-web-service
+ba3557a56b15: Pull complete 
+1dace236434b: Pull complete 
+4f4fb700ef54: Pull complete 
+Digest: sha256:dd4d367476f86b7d7579d3379fe446ae5dfce25480903fb0966fc2e5257e0543
+Status: Downloaded newer image for devopsdockeruh/simple-web-service:alpine
+docker.io/devopsdockeruh/simple-web-service:alpine
+$ docker images
+REPOSITORY                          TAG        IMAGE ID       CREATED        SIZE
+devopsdockeruh/simple-web-service   ubuntu     4e3362e907d5   6 months ago   83MB
+devopsdockeruh/simple-web-service   alpine     fd312adc88e0   6 months ago   15.7MB
+
+--> Alpine is much lighter than Ubuntu.
+
+$ docker run -d --rm -it devopsdockeruh/simple-web-service:alpine
+6de88847de6f26accc012a30264922afc88934a7371071136e0d63ab78e33256
+$ docker ps
+CONTAINER ID   IMAGE                                      COMMAND                 CREATED         STATUS        PORTS     NAMES
+6de88847de6f   devopsdockeruh/simple-web-service:alpine   "/usr/src/app/server"   2 seconds ago   Up 1 second             crazy_tharp
+$ docker exec -it 6de sh
+/usr/src/app # tail -f ./text.log
+2021-09-11 10:58:54 +0000 UTC
+2021-09-11 10:58:56 +0000 UTC
+2021-09-11 10:58:58 +0000 UTC
+2021-09-11 10:59:00 +0000 UTC
+2021-09-11 10:59:02 +0000 UTC
+Secret message is: 'You can find the source code here: https://github.com/docker-hy'
+2021-09-11 10:59:04 +0000 UTC
+2021-09-11 10:59:06 +0000 UTC
+2021-09-11 10:59:08 +0000 UTC
+2021-09-11 10:59:10 +0000 UTC
+2021-09-11 10:59:12 +0000 UTC
+^C
+/usr/src/app # exit
+
